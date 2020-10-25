@@ -8,4 +8,4 @@ Installation
 ************
 Project requires: **Docker version 19.03.13**
 - docker build -t pizzabotimage .
-- docker run pizzabotimage
+- docker run --rm --name pizzabot pizzabotimage
