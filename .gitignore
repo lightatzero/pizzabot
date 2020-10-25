@@ -1,5 +1,6 @@
-venv/*
-src/__pycache__/*
+venv/
+src/__pycache__/
 Slice_Code_Challenge.pdf
-__pycache__/*
+__pycache__/
 tests/__pycache__/
+pizzabot.egg-info/
