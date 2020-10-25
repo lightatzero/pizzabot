@@ -8,7 +8,6 @@ WORKDIR /
 COPY pizzabot/* /usr/pizzabot/pizzabot/
 COPY scripts/* /usr/pizzabot/scripts/
 COPY tests/* /usr/pizzabot/tests/
-COPY __init__.py /usr/pizzabot/
 
 # copy the dependencies file to the working directory
 COPY setup.py /usr/pizzabot
