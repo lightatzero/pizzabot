@@ -1,5 +1,3 @@
-from pizzabot_instructions import PizzabotInstructions
-from pizzabot_coordinates import PizzabotCoordinate
+from pizzabot.pizzabot_instructions import PizzabotInstructions
 
 print(PizzabotInstructions())
-
