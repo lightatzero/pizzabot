@@ -1,21 +1,25 @@
 from dataclasses import dataclass, field
 from typing import List
 
-shorthand_action_dict = {
-"N": "Move north",
-"S": "Move south",
-"E": "Move east",
-"W": "Move west",
-"D": "Drop pizza",
-}
+from pizzabot_coordinates import PizzabotCoordinate as DeltaCord
+
+shorthand_description_movement = [
+    ("N", "Move north", DeltaCord(1,0,order='xy')),
+    ("S", "Move south", DeltaCord(-1,0,order='xy')),
+    ("E", "Move east", DeltaCord(0,1,order='xy')),
+    ("W", "Move west", DeltaCord(0,-1,order='xy')),
+    ("D", "Drop pizza", DeltaCord(0,0,order='xy'))
+]
 
 @dataclass
 class Instruction:
     shorthand: str
-    action: str
+    description: str
+    movement: DeltaCord
 
 def make_instructions():
-    return [Instruction(shorthand, action) for shorthand, action in shorthand_action_dict.items()]
+    return [Instruction(s, d, m) \
+            for s,d,m in shorthand_description_movement]
 
 @dataclass
 class PizzabotInstructions:
