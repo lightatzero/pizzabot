@@ -1,7 +1,6 @@
 import re
 
 from pizzabot.grid import PizzabotGrid
-
 from pizzabot.coordinates import PizzabotCoordinate, default_order
 
 
@@ -11,6 +10,10 @@ class PizzabotInput(object):
         self.input_string_numbers = []
         self.grid = PizzabotGrid(0, 0)
         self.coordinates = []
+        self._extract_ints()
+        if len(self.input_string_numbers) >= 2:
+            self.extract_grid()
+            self.extract_coordinates()
 
     def __len__(self):
         return len(self.input_string)
@@ -21,12 +24,12 @@ class PizzabotInput(object):
         ]
 
     def extract_grid(self):
-        self._extract_ints()
+        self.grid = PizzabotGrid(0, 0)
         self.grid.x = self.input_string_numbers[0]
         self.grid.y = self.input_string_numbers[1]
 
     def extract_coordinates(self):
-        self._extract_ints()
+        self.coordinates = []
         list_of_coordinate_ints = self.input_string_numbers[2:]
         for x, y in zip(*[iter(list_of_coordinate_ints)] * 2):
             self.coordinates.append(PizzabotCoordinate(x, y, order=default_order))

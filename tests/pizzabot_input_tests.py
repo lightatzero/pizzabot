@@ -22,15 +22,6 @@ def test_valid_small_input_string(valid_small_input):
     assert len(valid_small_input) == 17
 
 
-def test_default_grid(valid_small_input):
-    assert valid_small_input.grid.x == 0
-    assert valid_small_input.grid.y == 0
-
-
-def test_default_coordinates(valid_small_input):
-    assert len(valid_small_input.coordinates) == 0
-
-
 def test_extract_grid_coordinates(valid_small_input):
     valid_small_input.extract_grid()
     assert valid_small_input.grid.x == 5
