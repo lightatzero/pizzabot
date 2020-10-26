@@ -8,6 +8,7 @@ WORKDIR /
 COPY pizzabot/* /usr/pizzabot/pizzabot/
 COPY scripts/* /usr/pizzabot/scripts/
 COPY tests/* /usr/pizzabot/tests/
+COPY bin/* /usr/pizzabot/bin/
 
 # copy the dependencies file to the working directory
 COPY setup.py /usr/pizzabot
@@ -20,5 +21,4 @@ WORKDIR /usr/pizzabot/
 RUN ./scripts/run_tests
 
 # command to run on container start
-WORKDIR /usr/pizzabot/pizzabot/
-CMD [ "python", "./__main__.py" ]
+CMD [ "cli"]

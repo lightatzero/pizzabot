@@ -1,8 +1,8 @@
 import re
 
-from pizzabot.pizzabot_grid import PizzabotGrid
+from pizzabot.grid import PizzabotGrid
 
-from pizzabot.pizzabot_coordinates import PizzabotCoordinate, default_order
+from pizzabot.coordinates import PizzabotCoordinate, default_order
 
 
 class PizzabotInput(object):

@@ -1,7 +1,7 @@
 import pytest
 
-from pizzabot.pizzabot_input import PizzabotInput
-from pizzabot.pizzabot_coordinates import PizzabotCoordinate, default_order
+from pizzabot.input import PizzabotInput
+from pizzabot.coordinates import PizzabotCoordinate, default_order
 
 
 @pytest.fixture

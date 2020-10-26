@@ -1,8 +1,8 @@
 from dataclasses import dataclass, field
 from typing import List
 
-from pizzabot.pizzabot_coordinates import PizzabotCoordinate as DeltaCord
-from pizzabot.pizzabot_coordinates import default_order
+from pizzabot.coordinates import PizzabotCoordinate as DeltaCord
+from pizzabot.coordinates import default_order
 
 shorthand_description_movement = [
     ("N", "Move north", DeltaCord(1, 0, order=default_order)),

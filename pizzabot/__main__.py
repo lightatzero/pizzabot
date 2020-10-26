@@ -1,3 +1,3 @@
-from pizzabot.pizzabot_instructions import PizzabotInstructions
+from pizzabot.instructions import PizzabotInstructions
 
 print(PizzabotInstructions())
