@@ -27,3 +27,7 @@ class PizzabotEngine(object):
             while self.position != target:
                 self.update_postion(target)
             self.journey.append(self.instructions[0])
+        output_string = ""
+        for step in self.journey:
+            output_string += step.shorthand
+        return output_string

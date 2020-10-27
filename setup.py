@@ -11,5 +11,5 @@ setup(name='pizzabot',
         "coordinates",
         "pytest",
     ],
-    scripts=['bin/cli'],
+    scripts=['bin/pizzabot'],
 )

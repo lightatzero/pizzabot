@@ -1,5 +1,0 @@
-#!/usr/bin/env python
-
-from pizzabot.instructions import PizzabotInstructions
-
-print(PizzabotInstructions())

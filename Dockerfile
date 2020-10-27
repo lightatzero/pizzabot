@@ -21,4 +21,4 @@ WORKDIR /usr/pizzabot/
 RUN ./scripts/run_tests
 
 # command to run on container start
-CMD [ "cli"]
+CMD ["pizzabot", "5x5 (0, 0) (1, 3) (4,4) (4, 2) (4, 2) (0, 1) (3, 2) (2, 3) (4, 1)"]

@@ -1,0 +1,10 @@
+#!/usr/bin/env python
+
+import sys
+
+from pizzabot.engine import PizzabotEngine
+
+for i, arg in enumerate(sys.argv):
+    if i == 1:
+        pe = PizzabotEngine()
+        print(pe.process_string(arg))
