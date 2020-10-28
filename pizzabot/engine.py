@@ -4,6 +4,36 @@ from pizzabot.instructions import PizzabotInstructions
 
 
 class PizzabotEngine(object):
+    """
+    A class to calculate instructions from a string for the pizzabot to perform
+
+    ...
+
+    Attributes
+    ----------
+    instructions : PizzabotInstructions
+        Instructions the pizzabot can perform
+
+    position : PizzabotCoordinate
+        The current position of the pizzabot
+
+    journey : list
+        Instructions performed by the pizzabot
+
+    input : PizzabotInput
+        Parses input string, to grid and coordinates objects
+
+    Methods
+    -------
+    update_postion(target):
+        Moves the pizzabot closer to the target by selecting the best
+        instruction, records the best instruction to its journey.
+
+    process_string(input_string):
+        Takes a string from the CLI, encoding a grid and coordinates. Returns
+        short hand notation for the pizzabot to deliver pizza to coordinates.
+    """
+
     def __init__(self):
         self.instructions = PizzabotInstructions().Instructions
         self.position = PizzabotCoordinate(0, 0)

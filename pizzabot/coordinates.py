@@ -2,6 +2,37 @@ from math import sqrt
 
 
 class PizzabotCoordinate:
+    """
+    A class to represent a coordinate.
+
+    ...
+
+    Attributes
+    ----------
+    points : list
+        List of integers that encode a coordinate
+
+    Methods
+    -------
+    __len__():
+        Returns the number of dimensions of coordinate
+
+    _check_len():
+        When preforming math on coordinate, make sure they share dimensions.
+
+    __abs__():
+        Returns the size of the coordinate
+
+    __iadd__():
+        Returns the sum of coordinates
+
+    __sub__():
+        Returns the difference of coordinates
+
+    __sub__():
+        Returns true if the coordinates are the same
+    """
+
     def __init__(self, *argv):
         self.points = []
         for arg in argv:

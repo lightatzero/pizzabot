@@ -11,6 +11,40 @@ COORDINATES_WITHOUT_BRACKET = r"^-?\d\,\ ?-?\d$"
 
 
 class PizzabotInput(object):
+    """
+    A class to parse a string with a grid and coordinates into
+    object for the pizzabot to act on
+
+    ...
+
+    Attributes
+    ----------
+    input_string : str
+        The string from the cli contains the grid and coordinates
+
+    input_string_numbers : str
+        Integers extracted from the string
+
+    coordinates : list
+        List of PizzabotCoordinates for the pizzabot to deliver to
+
+    grid : PizzabotGrid
+        Grid pizzabot can travel on 
+
+    Methods
+    -------
+    _validate_input_string():
+        Return true and update input_string if valid
+
+    _extract_ints():
+        Extracts ints from input string into list
+
+    extract_grid():
+        Extracts grid from the integer list
+
+    extract_coordinates():
+        Extracts coordinates from the integer list
+    """
     def __init__(self, input_string=""):
         self.input_string = ""
         self.input_string_numbers = []
