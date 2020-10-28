@@ -3,7 +3,7 @@
 from setuptools import setup
 
 setup(name='pizzabot',
-    version='0.1.0',
+    version='0.1.1',
     author='light at zero',
     author_email='lightatzero@gmail.com',
     packages=['pizzabot'],

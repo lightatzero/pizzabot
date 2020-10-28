@@ -9,8 +9,10 @@ from pizzabot.coordinates import PizzabotCoordinate
 def valid_small_engine():
     return PizzabotEngine()
 
+
 def test_default_starting_postion(valid_small_engine):
     valid_small_engine.position == PizzabotCoordinate(0, 0)
+
 
 def test_process_string(valid_small_engine):
     pe = PizzabotEngine()

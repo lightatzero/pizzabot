@@ -23,6 +23,8 @@ class PizzabotEngine(object):
     def process_string(self, input_string):
         self.input = None
         self.input = PizzabotInput(input_string)
+        if self.input.input_string == "":
+            exit()
         for target in self.input.coordinates:
             while self.position != target:
                 self.update_postion(target)
