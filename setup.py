@@ -8,7 +8,6 @@ setup(name='pizzabot',
     author_email='lightatzero@gmail.com',
     packages=['pizzabot'],
     install_requires=[
-        "coordinates",
         "pytest",
     ],
     scripts=['bin/pizzabot'],
