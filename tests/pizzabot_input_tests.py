@@ -1,7 +1,7 @@
 import pytest
 
 from pizzabot.input import PizzabotInput
-from pizzabot.coordinates import PizzabotCoordinate, default_order
+from pizzabot.coordinates import PizzabotCoordinate
 
 
 @pytest.fixture
@@ -32,10 +32,10 @@ def test_extract_coordinates_coordinates(valid_small_input):
     valid_small_input.extract_coordinates()
     assert len(valid_small_input.coordinates) == 2
     assert valid_small_input.coordinates[0] == PizzabotCoordinate(
-        1, 3, order=default_order
+        1, 3
     )
     assert valid_small_input.coordinates[1] == PizzabotCoordinate(
-        4, 4, order=default_order
+        4, 4
     )
 
 

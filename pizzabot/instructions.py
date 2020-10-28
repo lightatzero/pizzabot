@@ -2,14 +2,13 @@ from dataclasses import dataclass, field
 from typing import List
 
 from pizzabot.coordinates import PizzabotCoordinate as DeltaCord
-from pizzabot.coordinates import default_order
 
 shorthand_description_movement = [
-    ("D", "Drop pizza", DeltaCord(0, 0, order=default_order)),
-    ("N", "Move north", DeltaCord(0, 1, order=default_order)),
-    ("S", "Move south", DeltaCord(0, -1, order=default_order)),
-    ("E", "Move east", DeltaCord(1, 0, order=default_order)),
-    ("W", "Move west", DeltaCord(-1, 0, order=default_order)),
+    ("D", "Drop pizza", DeltaCord(0, 0)),
+    ("N", "Move north", DeltaCord(0, 1)),
+    ("S", "Move south", DeltaCord(0, -1)),
+    ("E", "Move east", DeltaCord(1, 0)),
+    ("W", "Move west", DeltaCord(-1, 0)),
 ]
 
 

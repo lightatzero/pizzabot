@@ -1,7 +1,7 @@
 import re
 
 from pizzabot.grid import PizzabotGrid
-from pizzabot.coordinates import PizzabotCoordinate, default_order
+from pizzabot.coordinates import PizzabotCoordinate
 
 
 class PizzabotInput(object):
@@ -32,4 +32,4 @@ class PizzabotInput(object):
         self.coordinates = []
         list_of_coordinate_ints = self.input_string_numbers[2:]
         for x, y in zip(*[iter(list_of_coordinate_ints)] * 2):
-            self.coordinates.append(PizzabotCoordinate(x, y, order=default_order))
+            self.coordinates.append(PizzabotCoordinate(x, y))

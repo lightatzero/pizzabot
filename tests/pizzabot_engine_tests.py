@@ -2,7 +2,7 @@ import pytest
 
 from pizzabot.engine import PizzabotEngine
 
-from pizzabot.coordinates import PizzabotCoordinate, default_order
+from pizzabot.coordinates import PizzabotCoordinate
 
 
 @pytest.fixture
@@ -10,7 +10,7 @@ def valid_small_engine():
     return PizzabotEngine()
 
 def test_default_starting_postion(valid_small_engine):
-    valid_small_engine.position == PizzabotCoordinate(0, 0, order=default_order)
+    valid_small_engine.position == PizzabotCoordinate(0, 0)
 
 def test_process_string(valid_small_engine):
     pe = PizzabotEngine()
