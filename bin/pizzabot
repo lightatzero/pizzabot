@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import sys
 
@@ -7,9 +7,11 @@ from pizzabot.engine import PizzabotEngine
 if len(sys.argv) < 2:
     print('ERROR: pizzabot requires a valid string, eg "5x5 (1, 3) (4, 4)"')
     exit()
-
 try:
-    pe = PizzabotEngine()
-    print(pe.process_string(sys.argv[1]))
+    input_string = sys.argv[1]
 except:
     print('ERROR: pizzabot requires a valid string, eg "5x5 (1, 3) (4, 4)"')
+    exit()
+
+pe = PizzabotEngine()
+print(pe.process_string(input_string))
