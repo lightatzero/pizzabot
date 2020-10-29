@@ -12,7 +12,7 @@ ENNNDEEEND
 # Installation
 
 ```sh
-$ pip install pizzabot
+$ pip3 install pizzabot
 ```
 # Build and test from source
 
