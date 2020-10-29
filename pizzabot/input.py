@@ -4,10 +4,10 @@ from pizzabot.grid import PizzabotGrid
 from pizzabot.coordinates import PizzabotCoordinate
 
 
-INPUT_STRING_START_WITH_GRID_REGEX = r"^-?\dx-?\d \("
+INPUT_STRING_START_WITH_GRID_REGEX = r"^-?\d+x-?\d+ \("
 GET_ALL_INTEGERS_REGEX = r"-?\d+"
 BEGINS_AND_ENDS_WITH_BRACKET = r"^\(.*\)$"
-COORDINATES_WITHOUT_BRACKET = r"^-?\d\,\ ?-?\d$"
+COORDINATES_WITHOUT_BRACKET = r"^-?\d+\,\ ?-?\d+$"
 
 
 class PizzabotInput(object):
