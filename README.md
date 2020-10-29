@@ -19,7 +19,7 @@ $ pip3 install pizzabot
 ```sh
 $ git clone https://github.com/lightatzero/pizzabot.git
 $ cd pizzabot
-$ pip install -e ./
+$ pip3 install -e ./
 $ ./scripts/run_tests
 ```
 If you want to isolate in docker
