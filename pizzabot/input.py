@@ -6,7 +6,7 @@ from pizzabot.coordinates import PizzabotCoordinate
 
 GRID_REGEX = r"^-?\d+x-?\d+ \("
 INTEGERS_REGEX = r"-?\d+"
-SPLIT_PAIRS_BRACKET = r"\).?\("
+SPLIT_PAIRS_BRACKET = r"\("
 
 
 class PizzabotInput(object):
@@ -58,9 +58,9 @@ class PizzabotInput(object):
     def _extract_coordinates(self, input_string):
         coordinates = []
         c_strs = re.split(SPLIT_PAIRS_BRACKET, input_string)
-        if len(c_strs) < 2:
+        if len(c_strs) < 1:
             return []
-        for c_str in c_strs:
+        for c_str in c_strs[1:]:
             coordinates.append(self._parse_coordinate(c_str))
         if self._validate_coordinates(input_string, coordinates):
             return coordinates

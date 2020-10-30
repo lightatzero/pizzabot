@@ -59,6 +59,10 @@ def test_extract_coordinates_coordinates_count(input_string, number_of_cordinate
             "5x5 0, 0) (1, 3) (4, 4)",
             0,
         ),
+        (
+            "5x5 (1,1)",
+            1,
+        ),
     ],
 )
 def test_valid_input_strings(input_string, valid_coordinates_count):

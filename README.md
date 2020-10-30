@@ -3,7 +3,7 @@
 Slice is working on a robot that delivers pizza. To instruct Pizzabot on how to deliver pizzas to all the houses in a neighborhood, give it a input string like this :P
 ```sh
 $ pizzabot "5x5 (1, 3) (4,4)"
-ENNNDEEEND
+NNNEDEENED
 ```
 # Dependencies
 
