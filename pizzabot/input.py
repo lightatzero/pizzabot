@@ -4,10 +4,9 @@ from pizzabot.grid import PizzabotGrid
 from pizzabot.coordinates import PizzabotCoordinate
 
 
-INPUT_STRING_START_WITH_GRID_REGEX = r"^-?\d+x-?\d+ \("
-GET_ALL_INTEGERS_REGEX = r"-?\d+"
-BEGINS_AND_ENDS_WITH_BRACKET = r"^\(.*\)$"
-COORDINATES_WITHOUT_BRACKET = r"^-?\d+\,\ ?-?\d+$"
+GRID_REGEX = r"^-?\d+x-?\d+ \("
+INTEGERS_REGEX = r"-?\d+"
+SPLIT_PAIRS_BRACKET = r"\).?\("
 
 
 class PizzabotInput(object):
@@ -19,72 +18,67 @@ class PizzabotInput(object):
 
     Attributes
     ----------
-    input_string : str
-        The string from the cli contains the grid and coordinates
-
-    input_string_numbers : str
-        Integers extracted from the string
+    order : int
+        number of expected points in a coordinate
 
     coordinates : list
         List of PizzabotCoordinates for the pizzabot to deliver to
 
     grid : PizzabotGrid
-        Grid pizzabot can travel on 
+        Grid pizzabot can travel on
 
     Methods
     -------
-    _validate_input_string():
-        Return true and update input_string if valid
+    _extract_grid():
+        Extracts grid from the input string
 
-    _extract_ints():
-        Extracts ints from input string into list
+    _extract_coordinates():
+        Extracts coordinates from the input string
 
-    extract_grid():
-        Extracts grid from the integer list
+    _parse_coordinate():
+        Return pizzabot coordinate from a inter bracket string
 
-    extract_coordinates():
-        Extracts coordinates from the integer list
+    _validate_coordinates():
+        Returns true if the number of opening and closing braces match
+        the number of found coordinates, as the regexes are based on braces
     """
-    def __init__(self, input_string=""):
-        self.input_string = ""
-        self.input_string_numbers = []
-        self.coordinates = []
-        self.grid = PizzabotGrid(0, 0)
-        if self._validate_input_string(input_string):
-            self._extract_ints()
-            self.extract_grid()
-            self.extract_coordinates()
 
-    def __len__(self):
-        return len(self.input_string)
+    def __init__(self, input_string):
+        self.order = 2
+        self.grid = self._extract_grid(input_string)
+        self.coordinates = self._extract_coordinates(input_string)
 
-    def _validate_input_string(self, input_string):
-        if re.match(INPUT_STRING_START_WITH_GRID_REGEX, input_string) == None:
-            return False
-        cord_input_string = input_string.split(" ", 1)[1]
-        if re.match(BEGINS_AND_ENDS_WITH_BRACKET, cord_input_string) == None:
-            return False
-        cord_input_string = cord_input_string[1:-1]
-        cords_list = cord_input_string.split(") (")
-        for cord in cords_list:
-            if re.match(COORDINATES_WITHOUT_BRACKET, cord) == None:
-                return False
-        self.input_string = input_string
-        return True
+    def _extract_grid(self, input_string):
+        if re.match(GRID_REGEX, input_string) == None:
+            return None
+        g_strs = re.findall(INTEGERS_REGEX, input_string)[: self.order]
+        g_ints = [int(x) for x in g_strs]
+        return PizzabotGrid(*g_ints)
 
-    def _extract_ints(self):
-        self.input_string_numbers = [
-            int(d) for d in re.findall(GET_ALL_INTEGERS_REGEX, self.input_string)
-        ]
+    def _extract_coordinates(self, input_string):
+        coordinates = []
+        c_strs = re.split(SPLIT_PAIRS_BRACKET, input_string)
+        if len(c_strs) < 2:
+            return []
+        for c_str in c_strs:
+            coordinates.append(self._parse_coordinate(c_str))
+        if self._validate_coordinates(input_string, coordinates):
+            return coordinates
+        return []
 
-    def extract_grid(self):
-        self.grid = PizzabotGrid(0, 0)
-        if len(self.input_string_numbers) >= 2:
-            self.grid.x = self.input_string_numbers[0]
-            self.grid.y = self.input_string_numbers[1]
+    def _parse_coordinate(self, c_str):
+        strings = re.findall(INTEGERS_REGEX, c_str)[-self.order :]
+        c_int_list = [int(x) for x in strings]
+        return PizzabotCoordinate(*c_int_list)
 
-    def extract_coordinates(self):
-        self.coordinates = []
-        list_of_coordinate_ints = self.input_string_numbers[2:]
-        for x, y in zip(*[iter(list_of_coordinate_ints)] * 2):
-            self.coordinates.append(PizzabotCoordinate(x, y))
+    def _validate_coordinates(self, input_string, coordinates):
+        count_open_brace = 0
+        count_close_brace = 0
+        for letter in input_string:
+            if letter == "(":
+                count_open_brace += 1
+            if letter == ")":
+                count_close_brace += 1
+        if count_open_brace == count_close_brace == len(coordinates):
+            return True
+        return False
