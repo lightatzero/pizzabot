@@ -52,15 +52,14 @@ class PizzabotEngine(object):
         return best_instruction
 
     def process_string(self, input_string):
-        self.input = None
+        output_string = ""
         self.input = PizzabotInput(input_string)
-        if self.input.input_string == "":
-            exit()
+        if self.input.coordinates == []:
+            return None
         for target in self.input.coordinates:
             while self.position != target:
                 self.update_postion(target)
             self.journey.append(self.instructions[0])
-        output_string = ""
         for step in self.journey:
             output_string += step.shorthand
         return output_string
