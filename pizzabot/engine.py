@@ -41,11 +41,12 @@ class PizzabotEngine(object):
         self.input = None
 
     def update_postion(self, target):
-        init_delta = abs(target - self.position)
+        smallest_delta = abs(target - self.position)
         for instruction in self.instructions:
             delta = abs(target - instruction.movement - self.position)
-            if delta < init_delta:
+            if delta < smallest_delta:
                 best_instruction = instruction
+                smallest_delta = delta
         self.journey.append(best_instruction)
         self.position += best_instruction.movement
         return best_instruction

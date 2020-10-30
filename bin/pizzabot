@@ -1,17 +1,14 @@
 #!/usr/bin/env python3
 
 import sys
+import argparse
 
 from pizzabot.engine import PizzabotEngine
 
-if len(sys.argv) < 2:
-    print('ERROR: pizzabot requires a valid string, eg "5x5 (1, 3) (4, 4)"')
-    exit()
-try:
-    input_string = sys.argv[1]
-except:
-    print('ERROR: pizzabot requires a valid string, eg "5x5 (1, 3) (4, 4)"')
-    exit()
+parser = argparse.ArgumentParser(description='Pizzabot give it a grid and coordinates')
+parser.add_argument('input_string', type=str,
+                    help='input string for pizzabot: "5x5 (1, 3) (4, 4)"')
+args = parser.parse_args()
 
 pe = PizzabotEngine()
-print(pe.process_string(input_string))
+print(pe.process_string(args.input_string))
